@@ -1,24 +1,25 @@
 #include <stdio.h>
 #include "functions.h"
 
+#define PF(operator, var) "%-5s %s %7.3f %7.3f %7.3f \n", (operator), "=", (var).x, (var).y, (var).z
+#define PFdot(operator) "%-5s %s %7.3f \n", (operator), "="
+
 int main()
 {
-    double a[3] = {1, 2, 3};
-    double b[3] = {3, 2, 1};
+	struct vector3d vect_a = { 1,2,3 };
+	struct vector3d vect_b = { 3,2,1 };
+	struct vector3d res;
 
-    printf("\ndot3d   %f\n", dot3d(a, b));
+	res = sum3d(&vect_a, &vect_b);
+	printf(PF("sum", res));
 
-    printf("cross3d ");
-    for (int i = 0; i < 3; ++i) printf("%f ", cross3d(a, b)[i]);
-    printf("\n");
+	res = sub3d(&vect_a, &vect_b);
+	printf(PF("sub", res));
 
-    printf("sum3d   ");
-    for (int i = 0; i < 3; ++i) printf("%f ", sum3d(a, b)[i]);
-    printf("\n");
+	printf(PFdot("dot"), dot3d(&vect_a, &vect_b));
 
-    printf("sub3d   ");
-    for (int i = 0; i < 3; ++i) printf("%f ", sub3d(a, b)[i]);
-    printf("\n\n");
+	res = cross3d(&vect_a, &vect_b);
+	printf(PF("cross", res));
  
     return 0;
 }

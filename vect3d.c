@@ -1,43 +1,39 @@
-double* sum3d(double a[], double b[])
+#include "functions.h"
+
+struct vector3d sum3d(struct vector3d* vect_a, struct vector3d* vect_b)
 {
-    static double c[3] = { 0, 0, 0 };
-    
-    for(int i = 0; i < 3; ++i)
-    {
-        c[i] = a[i] + b[i];
-    }
-    return c;
+	struct vector3d res;
+
+	res.x = vect_a->x + vect_b->x;
+	res.y = vect_a->y + vect_b->y;
+	res.z = vect_a->z + vect_b->z;
+
+	return res;
 }
 
-double* sub3d(double a[], double b[])
+struct vector3d sub3d(struct vector3d* vect_a, struct vector3d* vect_b)
 {
-    static double c[3] = { 0, 0, 0 };
-    
-    for(int i = 0; i < 3; ++i)
-    {
-        c[i] = a[i] - b[i];
-    }
-    return c;
+	struct vector3d res;
+
+	res.x = vect_a->x - vect_b->x;
+	res.y = vect_a->y - vect_b->y;
+	res.z = vect_a->z - vect_b->z;
+
+	return res;
 }
 
-double dot3d(double a[], double b[])
+float dot3d(struct vector3d* vect_a, struct vector3d* vect_b)
 {
-    double c;
-    
-    for(int i = 0; i < 3; ++i)
-    {
-        c += a[i] * b[i];
-    }
-    return c;
+	return (vect_a->x * vect_b->x + vect_a->y * vect_b->y + vect_a->z * vect_b->z);
 }
 
-double* cross3d(double a[], double b[])
+struct vector3d cross3d(struct vector3d* vect_a, struct vector3d* vect_b)
 {
-	static double c[3] = { 0, 0, 0 };
+	struct vector3d res;
 
-	for (int i = 0; i < 3; ++i)
-	{
-		c[i] = a[(i + 1) % 3] * b[(i + 2) % 3] - a[(i + 2) % 3] * b[(i + 1) % 3];
-	}
-	return c;
+	res.x = vect_a->y * vect_b->z - vect_a->z * vect_b->y;
+	res.y = vect_a->z * vect_b->x - vect_a->x * vect_b->z;
+	res.z = vect_a->x * vect_b->y - vect_a->y * vect_b->x;
+
+	return res;
 }

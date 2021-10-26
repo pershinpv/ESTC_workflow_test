@@ -8,6 +8,6 @@ vect3d.o: vect3d.c
 	gcc -c vect3d.c
 
 clean:
-	rm -f main.o vect3d.o testvect
+	rm -f *.o
 
 .PHONY: clean
