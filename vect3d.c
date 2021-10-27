@@ -1,4 +1,5 @@
 #include "functions.h"
+#include <stdio.h>
 
 struct vector3d sum3d(struct vector3d* vect_a, struct vector3d* vect_b)
 {
@@ -36,4 +37,9 @@ struct vector3d cross3d(struct vector3d* vect_a, struct vector3d* vect_b)
 	res.z = vect_a->x * vect_b->y - vect_a->y * vect_b->x;
 
 	return res;
+}
+
+void printv3d(struct vector3d* vect, char optr[])
+{
+	printf("%-5s = %7.3f %7.3f %7.3f \n", optr, vect->x, vect->y, vect->z);
 }
