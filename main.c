@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "functions.h"
 
+/*Git push debug*/
+
 int main()
 {
 	struct vector3d vect_a = { 1,2,3 };
